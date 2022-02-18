@@ -17,6 +17,11 @@ node () {
 			} 
  		} 
 	}
+	stage ('Quality Check') {
+		withSonarQubeEnv('Sonar') {
+			bat "mvn sonar:sonar"
+		}
+	}		
 	stage ('App-CI - Post build actions') {
 /*
 Please note this is a direct conversion of post-build actions. 
